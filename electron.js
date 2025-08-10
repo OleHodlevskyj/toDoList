@@ -10,10 +10,10 @@ function createWindow() {
     },
   });
 
-  // Якщо у режимі розробки
+  // режим розробки
   win.loadURL('http://localhost:5173');
 
-  // Якщо у продакшн збірці:
+  // продакшн збірка:
   // win.loadFile(path.join(__dirname, 'dist/index.html'));
 }
 
