@@ -19,6 +19,7 @@ function TaskItem({ task, onToggle, onDelete, onEdit }: TaskItemProps) {
       setEditing(false);
     }
   };
+
   if (editing) {
     return (
       <li>
@@ -33,14 +34,17 @@ function TaskItem({ task, onToggle, onDelete, onEdit }: TaskItemProps) {
       </li>
     );
   }
+
   return (
-    <li>
+    <li className={task.status ? "done" : ""}>
       <span onClick={() => onToggle(task)} style={{ cursor: "pointer" }}>
         <b>{task.title}</b> {task.description && `- ${task.description}`}
         {task.status ? " ✅" : ""}
       </span>
-      <button className="edit-btn" onClick={() => setEditing(true)}>Редагувати</button>
-      <button className="delete-btn" onClick={() => onDelete(task.id)}>Видалити</button>
+      <div className="button-container">
+        <button className="edit-btn" onClick={() => setEditing(true)}>Редагувати</button>
+        <button className="delete-btn" onClick={() => onDelete(task.id)}>Видалити</button>
+      </div>
     </li>
   );
 }
