@@ -1,69 +1,58 @@
-# React + TypeScript + Vite
+# ToDoList Desktop App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Опис
+Це десктоп-додаток для керування завданнями, створений на базі:
+- **Electron** — для десктопного середовища
+- **Vite + React** — для фронтенду
+- **NestJS (Node.js)** — для бекенду (API)
+- **TypeScript** — для типізації
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Вимоги
+Перед запуском переконайтесь, що встановлені:
+- [Node.js](https://nodejs.org/)
+- npm
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Клонування репозиторію
+git clone https://github.com/OleHodlevskyj/toDoList
+cd todolist-electron
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Встановлення залежностей
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Фронтенд
+cd frontend
+npm install
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Бекенд
+cd ../backend
+npm install
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Запуск у режимі розробки
+### Запустити бекенд (NestJS)
+cd backend
+npm run start:dev
+Бекенд за замовчуванням стартує на http://localhost:3000
+
+### Запустити фронтенд + Electron
+cd ../frontend
+npm run dev
+
+### Структура проєкту
+/backend          # Бекенд (NestJS)
+  /src
+    /task         # Модуль для завдань
+    main.ts       # Точка входу бекенду
+  package.json
+
+/frontend         # Фронтенд (React + Vite + Electron)
+  electron.js     # Основний файл Electron
+  preload.js      # Прелоад скрипт
+  src/            # React код
+  package.json
+
+README.md
